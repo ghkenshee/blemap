@@ -1,0 +1,15 @@
+1. Project Overview
+  Definition: What is BleMap? It is a problem and solution intelligence platform
+  Problem Addressed: Find validated problems and solutions by real data and users powered by AI
+  Target Users: Students, Scientists, Researchers, Community Leaders, Businessmen, Professionals, Technicians
+  Core Value Proposition: Not sure what problem to look for? Find it at BleMap!
+
+2. System Architecture
+  Layers: Scraping, Pre-AI Database, Artificial Intelligence, Post-AI Database, UI
+  Request-Response Flow Diagram:
+    App to User: Display the problems or solutions
+    User to App: Validate, confirm, search for problems or solutions
+
+3. Tech Stack Justification
+  Reddit API, Gemini API, and Snoowrap
+  // Explain why these APIs are used and research Snoowrap  
