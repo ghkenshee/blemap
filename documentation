@@ -11,5 +11,15 @@
     User to App: Validate, confirm, search for problems or solutions
 
 3. Tech Stack Justification
-  Reddit API, Gemini API, and Snoowrap
-  // Explain why these APIs are used and research Snoowrap  
+  Reddit API, Gemini API, and Snoowrap (A fully-featured JavaScript wrapper for the Reddit API)
+
+4. Functional Requirements
+  a. User Management
+    - Register with Email & Password
+    - Log-in & Log-Out
+    - State the User Roles: Prospector*, Poster, Guest, Commenter (verify the various roles since these roles are interchangeable)
+    - Edit Profile (simple)
+    - Handle Authentication via Supabase Auth* (verify this via AI)
+  b. Case Submission
+    - Allow a registered user to submit a case..
+    Note: The problem is 'structured form'. The worst user is going to destroy the system by sending false information. Verify this issue.
