@@ -1,0 +1,19 @@
+│   ├── server.js
+│   ├── routes/
+│   │   ├── problems.js
+│   │   ├── solutions.js
+│   │   ├── users.js
+│   │   └── claims.js
+│   ├── controllers/
+│   │   ├── problemController.js
+│   │   ├── solutionController.js
+│   │   ├── userController.js
+│   │   └── claimController.js
+│   ├── models/
+│   │   ├── Problem.js
+│   │   ├── Solution.js
+│   │   ├── User.js
+│   │   └── Claim.js
+│   └── middleware/
+│       ├── auth.js
+│       └── errorHandler.js
