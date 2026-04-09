@@ -1,0 +1,32 @@
+├── ai/
+│   ├── gemini.js
+│   ├── validator.js
+│   ├── convergence.js
+│   └── scorer.js
+│
+├── scraper/
+│   ├── reddit.js
+│   ├── parser.js
+│   └── scheduler.js
+│
+├── docs/
+│   ├── functional-requirements.md
+│   ├── non-functional-requirements.md
+│   ├── use-cases.md
+│   ├── erd.md
+│   ├── api-documentation.md
+│   └── wireframes/
+│       ├── dashboard.png
+│       ├── problem-card.png
+│       └── submit-form.png
+│
+├── config/
+│   ├── supabase.js
+│   ├── gemini.js
+│   └── reddit.js
+│
+├── .env
+├── .gitignore
+├── package.json
+├── vercel.json
+└── README.md
