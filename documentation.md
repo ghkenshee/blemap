@@ -22,8 +22,75 @@
       - Edit Profile (simple)
       - Handle Authentication via Supabase Auth* (verify this via AI)
     b. Case Submission
-      - Allow a registered user to submit a case..
-      Note: The problem is 'structured form'. The worst user is going to destroy the system by sending false information. Verify this issue.
+      Definition: handles the intake of user-submitted problems through a dual-track system — an AI-assisted track for general users and a trusted track for verified communities. The goal is to capture natural human expression while maintaining data integrity for the problem matrix.
+        b1. Freeform Case Input
+          - System must provide a single free-form text input field for problem submission
+          - System must not present structured form fields to the user
+          - System must accept natural language input without formatting requirements
+          - System must display a submission button below the text input
+          - System must display a placeholder prompt — "Describe your problem in your own words..."
+        b2. Dual Track Routing
+          - System must determine submission track upon form submission
+          - System must route general user submissions through the AI-assisted track
+          - System must route verified community submissions through the trusted track
+          - System must identify the user track based on the account verification status and community membership
+        b3.  AI-Assisted Track
+          - System must send raw submission to Gemini API for processing
+          - AI must validate whether the submission is a genuine problem or noise
+          - AI must extract and generate the following from raw input:
+
+            Structured problem summary
+            Category classification
+            Inferred pain level
+            Gap score
+            Prospector CTA
+
+          - System must display AI-generated output to user for review before posting
+          - System must allow user to confirm AI output as accurate
+          - System must allow user to edit AI output before posting
+          - System must not post case to matrix without explicit user confirmation
+          - System must store AI-generated output permanently in Supabase upon confirmation
+          - System must never regenerate AI output after confirmation — response is persisted
+        b4. Trusted Track
+          - System must allow verified community members to bypass AI layer
+          - System must post trusted submissions directly to matrix without AI processing
+          - System must still subject trusted submissions to community validation
+          - System must still allow reporting of trusted submissions
+        b5. AI Rejection Handling
+          - System must notify user if AI determines submission is not a genuine problem
+          - System must display a gentle, non-harsh rejection message
+          - System must prompt user to elaborate rather than hard-blocking submission
+          - System must allow user to resubmit with additional context
+          - System must not permanently block any user based on single rejection
+        b6. Duplicate Detection
+          - System must check submitted problem against existing matrix entries
+          - AI must determine if submission is semantically similar to existing problem
+          - System must notify user if duplicate is detected
+          - System must display existing similar problem to user
+          - System must allow user to confirm existing problem instead of creating duplicate
+          - System must increment pain score of existing problem upon user confirmation
+        b7. Community Validation
+          - System must hold all new submissions in pending state upon posting
+          - System must make pending problems invisible on matrix
+          - System must require minimum five confirmations before problem appears on matrix
+          - System must auto-archive problems with zero confirmations after seven days
+          - System must display confirmation count on pending problems to submitter
+        b8. Domain Sensitivity Handling
+          - System must detect if submission belongs to Law or Medicine domain
+          - System must apply stricter AI validation to high sensitivity submissions
+          - System must attach disclaimer to all Law and Medicine problem entries
+          - Disclaimer must read: "Community suggested — not professional advice. Always consult a licensed professional."
+        b9. Submission Persistence
+          - System must store all confirmed submissions permanently in Supabase
+          - System must store original raw user input alongside AI-generated output
+          - System must record submission timestamp, user ID, track type, and domain
+          - System must never delete confirmed submissions without admin authorization
+        b10. Reporting
+          - System must display a report button on every problem card
+          - System must allow any user to flag a problem as fake, harmful, or irrelevant
+          - System must send flagged problems to admin review queue
+          - System must hide problem from matrix upon reaching five reports
+          - System must restore problem if admin clears the report
     c. AI Validation & Convergence
       - Send every submitted case to the Gemini API for validation
       - Determine if the case submission is a genuine problem/solution or noise
